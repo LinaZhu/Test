@@ -33,7 +33,7 @@ def get_document(username,password,dbname,docname):
 		print "Get doc done, doc id: %s, revision: %s can be found" % (res["_id"],res["_rev"])
 
 if __name__ == "__main__":
-	username = "lina	"
+	username = "lina"
 	password = "123456789"
 	dbname = "mytestdb_001"
 	docname = "mydoc_001"
