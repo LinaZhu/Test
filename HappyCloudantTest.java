@@ -48,9 +48,6 @@ public class HappyCloudantTest {
 			if(res.contains("true")){
 				System.out.println("Create db done.");
 			}
-			else{
-				System.out.println(res);
-			}
 				
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,7 +56,7 @@ public class HappyCloudantTest {
 	
 	public static void CreateDOC(String targetURL, String username, String password,String dbname, String docname) {
 		try {
-			//URL url = new URL("https://lina.cloudant.com/lndb/lndoc");
+			
 			URL url = new URL(targetURL+"/" + dbname + "/" + docname);
 			HttpURLConnection  con = (HttpURLConnection )url.openConnection();
 			
