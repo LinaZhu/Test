@@ -17,7 +17,7 @@ public class HappyCloudantTest {
 		String targetURL = "https://lina.cloudant.com";
 		String username = "lina";
 		String password = "123456789";
-		String dbname = "testdb006";
+		String dbname = "testdb001";
 		String docname ="document001";
 		
 		CreateDB(targetURL,username,password,dbname);
@@ -28,14 +28,14 @@ public class HappyCloudantTest {
 	
 	public static void CreateDB(String targetURL, String username, String password, String dbname) {
 		try {
-			//URL url = new URL("https://lina.cloudant.com/lndb");
+			
 			URL url = new URL(targetURL+"/"+ dbname);
 			HttpURLConnection  con = (HttpURLConnection )url.openConnection();
 			
 			con.setRequestMethod("PUT");
 			con.setDoOutput(true);
 			con.setDoInput(true);
-			//String auth = "lina:123456789";
+			
 			String auth = username + ":" + password;
 			String auth_str = new sun.misc.BASE64Encoder().encode(auth.getBytes());
 			con.setRequestProperty("Authorization", "Basic " + auth_str);
@@ -66,8 +66,7 @@ public class HappyCloudantTest {
 			con.setRequestMethod("PUT");
 			con.setDoOutput(true);
 			con.setDoInput(true);
-			
-			//String auth = "lina:123456789";
+		
 			String auth = username + ":" + password;
 			String auth_str = new sun.misc.BASE64Encoder().encode(auth.getBytes());
 			con.setRequestProperty("Authorization", "Basic " + auth_str);
@@ -105,13 +104,11 @@ public class HappyCloudantTest {
 	
 	public static void CetDOC(String targetURL, String username, String password,String dbname, String docname) {
 		try {
-			//URL url = new URL("https://lina.cloudant.com/lndb/lndoc");
 			URL url = new URL(targetURL+"/" + dbname + "/" + docname);
 			HttpURLConnection  con = (HttpURLConnection )url.openConnection();
 			
 			con.setRequestMethod("GET");
 			con.setDoInput(true);
-			//String auth = "lina:123456789";
 			String auth = username + ":" + password;
 			String auth_str = new sun.misc.BASE64Encoder().encode(auth.getBytes());
 			con.setRequestProperty("Authorization", "Basic " + auth_str);
@@ -119,12 +116,10 @@ public class HappyCloudantTest {
 	        InputStreamReader isr = new InputStreamReader(is);  
 	        BufferedReader br = new BufferedReader(isr);  
 	        String res = br.readLine();
-	        JSONObject json = JSONObject.parseObject(res);
-	        System.out.println(res); 
-	        
+	        System.out.println(res);         
 	        if(res.contains("_rev")){
 				System.out.println("Get doc success.");
-				JSONObject json = JSONObject.parseObject(res); //error ,why?
+				JSONObject json = JSONObject.parseObject(res); //error
 				System.out.println("Document id is : " + json.get("_id"));
 			}   	        
 		} catch (Exception e) {
