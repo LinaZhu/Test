@@ -119,7 +119,7 @@ public class HappyCloudantTest {
 	        System.out.println(res);         
 	        if(res.contains("_rev")){
 				System.out.println("Get doc success.");
-				JSONObject json = JSONObject.parseObject(res); //error
+				JSONObject json = new JSONObject(res);
 				System.out.println("Document id is : " + json.get("_id"));
 			}   	        
 		} catch (Exception e) {
